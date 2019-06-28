@@ -1,15 +1,24 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Home from '../views/Home.vue';
+import Subreddit from '../views/Subreddit.vue';
+import Post from '../views/Post.vue';
 
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
     routes: [
         {
-            component: Home,
+            component: Subreddit,
             path: '/'
+        },
+        {
+            component: Subreddit,
+            path: '/:subreddit'
+        },
+        {
+            component: Post,
+            path: '/:subreddit/:postid'
         }
     ]
 })
