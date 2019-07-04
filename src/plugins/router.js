@@ -3,17 +3,24 @@ import VueRouter from 'vue-router';
 
 import Subreddit from '../views/Subreddit.vue';
 import Post from '../views/Post.vue';
+import PageTitle from '../views/PageTitle.vue';
 
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
     routes: [
         {
-            component: Subreddit,
+            components: {
+                default: Subreddit,
+                title: PageTitle
+            },
             path: '/'
         },
         {
-            component: Subreddit,
+            components: {
+                default: Subreddit,
+                title: PageTitle
+            },
             path: '/:subreddit'
         },
         {

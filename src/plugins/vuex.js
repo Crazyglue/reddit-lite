@@ -10,10 +10,12 @@ const REDDIT_BASE_URL = 'https://www.reddit.com/r/';
 export const store = new Vuex.Store({
     state: {
         subreddit: {},
+        name: '',
         error: null
     },
     mutations: {
         SET_SUBREDDIT: (state, payload) => state.subreddit = payload,
+        SET_SUBREDDIT_NAME: (state, payload) => state.name = payload,
         SET_ERROR: (state, payload) => state.error = payload
     },
     actions: {
@@ -22,6 +24,8 @@ export const store = new Vuex.Store({
 
             const subredditUrl = `${REDDIT_BASE_URL}${subreddit}.json`
 
+            commit('SET_SUBREDDIT_NAME', subreddit)
+
             fetch(subredditUrl)
                 .then(res => res.json())
                 .then(data => commit('SET_SUBREDDIT', data))
@@ -29,7 +33,8 @@ export const store = new Vuex.Store({
         }
     },
     getters: {
-        posts: (state) => get(state.subreddit, 'data.children', []).slice(0, 25)
+        posts: (state) => get(state.subreddit, 'data.children', []).slice(0, 25),
+        name: (state) => `r/${state.name}`
     }
 })
 

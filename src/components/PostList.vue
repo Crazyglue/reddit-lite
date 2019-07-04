@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import get from 'lodash/get';
 import { mapGetters } from 'vuex';
 import PostListItem from './PostListItem.vue';
 
@@ -23,12 +24,14 @@ export default {
     computed: {
         ...mapGetters([ 'posts' ]),
         subredditPosts() {
-            return this.posts.map(({ data: { title, selftext, thumbnail, thumbnail_height } }) => {
+            return this.posts.map(({ data: { title, selftext, thumbnail, thumbnail_height, preview, permalink } }) => {
+                const sourceUrl = get(preview, 'images.0.source.url', thumbnail)
                 return {
                     title,
                     body: selftext,
-                    thumbnail,
-                    thumbnail_height
+                    thumbnail: sourceUrl,
+                    thumbnail_height,
+                    permalink
                     // thumbnail: smallResolution.url
                 }
             })

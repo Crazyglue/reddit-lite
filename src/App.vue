@@ -1,12 +1,11 @@
 <template>
     <v-app>
-        <v-toolbar app></v-toolbar>
+        <router-view name="title"></router-view>
         <v-content>
             <v-container fluid>
                 <router-view></router-view>
             </v-container>
         </v-content>
-        <v-footer app></v-footer>
     </v-app>
 </template>
 
