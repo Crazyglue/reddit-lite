@@ -26,7 +26,7 @@ export const store = new Vuex.Store({
 
             commit('SET_SUBREDDIT_NAME', subreddit)
 
-            fetch(subredditUrl)
+            return fetch(subredditUrl)
                 .then(res => res.json())
                 .then(data => commit('SET_SUBREDDIT', data))
                 .catch(err => commit('SET_ERROR', err));

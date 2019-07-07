@@ -1,14 +1,11 @@
 <template>
-    <v-container
-        fluid
-        grid-list-lg
-    >
+    <div>
         <PostListItem
             v-for="post in subredditPosts"
             :key="post.title"
             v-bind="post"
             />
-    </v-container>
+    </div>
 </template>
 
 <script>
@@ -24,15 +21,16 @@ export default {
     computed: {
         ...mapGetters([ 'posts' ]),
         subredditPosts() {
-            return this.posts.map(({ data: { title, selftext, thumbnail, thumbnail_height, preview, permalink } }) => {
+            return this.posts.map(({ data: { author, created, title, selftext, thumbnail, thumbnail_height, preview, permalink } }) => {
                 const sourceUrl = get(preview, 'images.0.source.url', thumbnail)
                 return {
+                    author,
+                    created,
                     title,
                     body: selftext,
                     thumbnail: sourceUrl,
                     thumbnail_height,
                     permalink
-                    // thumbnail: smallResolution.url
                 }
             })
         }

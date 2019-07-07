@@ -6,22 +6,35 @@
 import { mapActions } from 'vuex';
 import PostList from '../components/PostList.vue';
 
+const POST_REFRESH_INTERVAL = 60 * 1000; // 60 seconds
+
 export default {
     name: 'Subreddit',
     components: {
         PostList
     },
-    async mounted() {
-        this.fetchSubreddit()
+    data() {
+        return {
+            postTimer: null
+        }
     },
-    beforeRouteUpdate(to, from, next) {
-        console.log(': beforeRouteUpdate -> to', to)
-        this.fetchSubreddit()
-        next()
+    async mounted() {
+        this.resetFetchSubreddit()
     },
     methods: {
-        ...mapActions(['fetchSubreddit'])
-    }
+        ...mapActions(['fetchSubreddit']),
+        resetFetchSubreddit() {
+            // Resets the interval
+            if (this.postTimer) {
+                clearInterval(this.postTimer);
+            }
+            this.fetchSubreddit()
+            this.postTimer = setInterval(this.fetchSubreddit, POST_REFRESH_INTERVAL);
+        }
+    },
+    watch: {
+        '$route': 'resetFetchSubreddit'
+    },
 }
 </script>
 

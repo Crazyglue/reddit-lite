@@ -8,21 +8,22 @@ import PageTitle from '../views/PageTitle.vue';
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
-    mode: 'history',
     routes: [
         {
             components: {
                 default: Subreddit,
                 title: PageTitle
             },
-            path: '/'
+            path: '/',
+            name: 'home'
         },
         {
             components: {
                 default: Subreddit,
                 title: PageTitle
             },
-            path: '/:subreddit'
+            path: '/:subreddit',
+            name: 'subreddit'
         },
         {
             component: Post,
