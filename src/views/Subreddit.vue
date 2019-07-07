@@ -14,6 +14,11 @@ export default {
     async mounted() {
         this.fetchSubreddit()
     },
+    beforeRouteUpdate(to, from, next) {
+        console.log(': beforeRouteUpdate -> to', to)
+        this.fetchSubreddit()
+        next()
+    },
     methods: {
         ...mapActions(['fetchSubreddit'])
     }

@@ -9,22 +9,22 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
-      new HtmlWebpackPlugin({
-        template: 'src/templates/index.html'
-      }),
-      new VueLoaderPlugin()
+    new HtmlWebpackPlugin({
+      template: 'src/templates/index.html'
+    }),
+    new VueLoaderPlugin()
   ],
   module: {
     rules: [
-        {
-            test: /\.vue$/,
-            loader: 'vue-loader'
-        },
-        {
-            test: /\.css$/i,
-            use: ['style-loader', 'css-loader'],
-        }
-      ]
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      }
+    ]
   },
   resolve: {
     alias: {
