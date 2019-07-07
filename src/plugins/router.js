@@ -24,10 +24,6 @@ export const router = new VueRouter({
             },
             path: '/:subreddit',
             name: 'subreddit'
-        },
-        {
-            component: Post,
-            path: '/:subreddit/:postid'
         }
     ]
 })
