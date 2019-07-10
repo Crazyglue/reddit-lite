@@ -1,6 +1,13 @@
-# Bluecrew Frontend Coding Exercise
+# Reddit Lite
 
-## Deliverable questions:
+## Running
+
+```bash
+npm install
+npm run serve
+```
+
+## Rationale
 
 *How is your code structured, and why?*
 
