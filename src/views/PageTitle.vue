@@ -13,7 +13,7 @@
 
     <v-flex md4 offset-md2>
       <v-form @submit="goToSubreddit" onSubmit="return false;">
-        <v-text-field v-model="subredditName" label="Enter Subreddit"></v-text-field>
+        <v-text-field v-model="subredditName" :label="$t('forms.search.placeholder')"></v-text-field>
       </v-form>
     </v-flex>
 

@@ -1,0 +1,16 @@
+{
+    "en-US": {
+        "forms": {
+            "search": {
+                "placeholder": "Enter Subreddit"
+            }
+        },
+        "common": {
+            "comments": "Comments"
+        },
+        "posts": {
+            "authorPrefix": "By",
+            "timeSuffix": "ago"
+        }
+    }
+}
