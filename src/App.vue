@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <v-app dark>
         <router-view name="title"></router-view>
         <v-content>
             <v-container fluid grid-list-lg>
